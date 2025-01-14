@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nota_ampliada"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/card"
+        tools:context=".NotasAdapter.Entities.NotaAmpliada">
+
+        <TextView
+            android:id="@+id/modificarNota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/modificarNota"
+            android:textColor="@color/colorTexto"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/cambiarTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:ems="10"
+            android:hint="@string/tituloNota"
+            android:inputType="text"
+            android:textColor="@color/colorTexto"
+            android:textColorHint="@color/colorHint"
+            app:layout_constraintEnd_toEndOf="@+id/modificarNota"
+            app:layout_constraintStart_toStartOf="@+id/modificarNota"
+            app:layout_constraintTop_toBottomOf="@+id/modificarNota" />
+
+        <EditText
+            android:id="@+id/cambiarData"
+            android:layout_width="144dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="@string/data"
+            android:inputType="date"
+            android:textColor="@color/colorTexto"
+            android:textColorHint="@color/colorHint"
+            app:layout_constraintStart_toStartOf="@+id/cambiarTitulo"
+            app:layout_constraintTop_toBottomOf="@+id/cambiarTitulo" />
+
+        <EditText
+            android:id="@+id/cambiarModulo"
+            android:layout_width="195dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="30dp"
+            android:hint="@string/modulo"
+            android:inputType="text"
+            android:textColor="@color/colorTexto"
+            android:textColorHint="@color/colorHint"
+            app:layout_constraintStart_toStartOf="@+id/cambiarData"
+            app:layout_constraintTop_toBottomOf="@+id/cambiarData" />
+
+        <Button
+            android:id="@+id/btCancelar"
+            style="@style/botones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/btCancel"
+            android:textColor="@color/colorTexto"
+            app:layout_constraintEnd_toEndOf="@+id/modificarNota"
+            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintStart_toStartOf="@+id/modificarNota"
+            app:layout_constraintTop_toBottomOf="@+id/btGardar" />
+
+        <Button
+            android:id="@+id/btGardar"
+            style="@style/botones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/btSave"
+            android:textColor="@color/colorTexto"
+            app:layout_constraintEnd_toEndOf="@+id/modificarNota"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="@+id/modificarNota"
+            app:layout_constraintTop_toBottomOf="@+id/etTexto" />
+
+        <EditText
+            android:id="@+id/etTexto"
+            android:layout_width="277dp"
+            android:layout_height="168dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:textColor="@color/colorTexto"
+            app:layout_constraintEnd_toEndOf="@+id/modificarNota"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="@+id/modificarNota"
+            app:layout_constraintTop_toBottomOf="@+id/cambiarModulo" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btAtras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/azulToolbar"
+            android:contentDescription="@string/fab"
+            android:src="@drawable/ic_back"
+            android:tint="@color/white"
+            app:layout_anchorGravity="bottom|end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

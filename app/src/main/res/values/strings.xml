@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Notas</string>
+
+    <string name="fab">Engadir nota</string>
+    <string name="data">Data</string>
+    <string name="modulo">Módulo</string>
+    <string name="tituloNota">Título</string>
+    <string name="modificarNota">MODIFICAR NOTA</string>
+    <string name="novaNota">NOVA NOTA</string>
+    <string name="btAdd">ENGADIR</string>
+    <string name="btSave">GARDAR</string>
+    <string name="btCancel">CANCELAR</string>
+    <string name="login">LOGIN</string>
+    <string name="nome">Nome</string>
+    <string name="password">Contrasinal</string>
+    <string name="rexistrarse">REXISTRARSE</string>
+    <string name="acceder">ACCEDER</string>
+
+
+</resources>

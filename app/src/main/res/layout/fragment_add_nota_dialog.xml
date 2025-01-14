@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dfNotas"
+    android:layout_width="300dp"
+    android:layout_height="450dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/card">
+
+    <TextView
+        android:id="@+id/tituloNova"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/novaNota"
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/colorTexto"
+        android:textAlignment="center"/>
+
+    <!-- Campo de texto para el nombre del item -->
+    <EditText
+        android:id="@+id/dfTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/tituloNota"
+        android:textColorHint="@color/colorHint"
+        android:textColor="@color/colorTexto"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/dfData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/data"
+        android:textColorHint="@color/colorHint"
+        android:textColor="@color/colorTexto"
+        android:inputType="date" />
+    <EditText
+        android:id="@+id/dfModulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textColorHint="@color/colorHint"
+        android:textColor="@color/colorTexto"
+        android:hint="@string/modulo" />
+
+    <!-- Botones de acción -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddNota"
+            style="@style/botones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/btAdd"
+            android:textColor="@color/colorTexto" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelAdd"
+            style="@style/botones"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/btCancel"
+            android:textColor="@color/colorTexto" />
+
+    </LinearLayout>
+</LinearLayout>
