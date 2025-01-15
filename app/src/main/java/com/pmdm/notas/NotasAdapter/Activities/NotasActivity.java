@@ -26,6 +26,7 @@ import com.pmdm.notas.databinding.NotasReciclerBinding;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
