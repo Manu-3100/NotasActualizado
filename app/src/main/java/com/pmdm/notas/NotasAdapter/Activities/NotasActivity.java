@@ -1,6 +1,8 @@
 package com.pmdm.notas.NotasAdapter.Activities;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +24,7 @@ import com.pmdm.notas.NotasAdapter.Dialogs.AddNotaDF;
 import com.pmdm.notas.NotasAdapter.Entities.Nota;
 import com.pmdm.notas.NotasAdapter.Entities.NotaAmpliada;
 import com.pmdm.notas.R;
+import com.pmdm.notas.bd.NotasBbHelper;
 import com.pmdm.notas.databinding.NotasReciclerBinding;
 
 import java.io.Serializable;
@@ -51,6 +54,9 @@ public class NotasActivity extends AppCompatActivity implements AddNotaDF.AddNot
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.notas_recicler);
+
+        NotasBbHelper dbHelper = new NotasBbHelper(NotasActivity.this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         // Recibimos o nome do usuario
         usuario = getIntent().getStringExtra("usuario");

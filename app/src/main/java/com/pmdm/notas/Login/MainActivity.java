@@ -1,6 +1,9 @@
 package com.pmdm.notas.Login;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -17,6 +20,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.pmdm.notas.Login.entities.Usuario;
 import com.pmdm.notas.NotasAdapter.Activities.NotasActivity;
 import com.pmdm.notas.R;
+import com.pmdm.notas.bd.DatabaseManager;
+import com.pmdm.notas.bd.NotasBbHelper;
+import com.pmdm.notas.bd.NotasReaderContract;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +37,16 @@ public class MainActivity extends AppCompatActivity {
 
     // para mostrar o no la contraseña
     private boolean contraseñaVisible = false;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.login);
+
+        DatabaseManager dbManager = DatabaseManager.getInstance(getApplicationContext());
+        db = dbManager.getDatabase();
 
         generarListaUsuarios();
         user = findViewById(R.id.etNome);
@@ -97,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
         if (usuario.isEmpty() || contrasinal.isEmpty()){
             Toast.makeText(this, "COMPLETE TODOS OS CAMPOS", Toast.LENGTH_SHORT).show();
         }
-
         // recorrer la lista para ver si usuario existe o no y contraseña existen
         for (Usuario persona : usuariosList){
             if (persona.getNome().equals(usuario)){
@@ -123,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         else if (!usuarioExiste){
             Toast.makeText(this, "USUARIO NON EXISTE", Toast.LENGTH_SHORT).show();
         }
-        // vaciar los campos de texto
+        // vaciar los campos de text
         user.setText("");
         pass.setText("");
     }
@@ -146,6 +155,19 @@ public class MainActivity extends AppCompatActivity {
                 else if (!persona.getNome().equals(usuario)){
                     // añadir usuario nuevo a la lista
                     usuariosList.add(new Usuario(usuario,contrasinal));
+                    ContentValues values = new ContentValues();
+                    values.put("nombre", usuario);
+                    values.put("contraseña", contrasinal);
+
+//                    try (NotasBbHelper dbHelper = new NotasBbHelper(MainActivity.this)) {
+//                        SQLiteDatabase db = dbHelper.getWritableDatabase();
+//                        long newRowID = db.insert(NotasReaderContract.UsuariosEntry.TABLE_NAME, null, values);
+//                        //System.out.println(newRowID);
+//                    } catch (SQLiteException e) {
+//                        System.err.println(e.getMessage());
+//                        throw new RuntimeException(e);
+//                    }
+                    long id = DatabaseManager.insertarDatos(db, NotasReaderContract.UsuariosEntry.TABLE_NAME, values);
 
                     // creamos nuestra actividad
                     Intent intent2 = new Intent(MainActivity.this, NotasActivity.class);
