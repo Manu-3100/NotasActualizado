@@ -30,9 +30,14 @@ public class DatabaseManager {
             database.close();
         }
     }
-
     public static long insertarDatos(SQLiteDatabase db, String tabla, ContentValues values){
         return db.insert(NotasReaderContract.UsuariosEntry.TABLE_NAME, null, values);
     }
+
+    public static void extraerUsuarios(SQLiteDatabase db){
+        //db.
+    }
+
+
 
 }
