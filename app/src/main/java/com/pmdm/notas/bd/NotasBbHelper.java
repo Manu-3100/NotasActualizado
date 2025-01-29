@@ -1,6 +1,7 @@
 package com.pmdm.notas.bd;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
@@ -21,8 +22,10 @@ public class NotasBbHelper extends SQLiteOpenHelper {
                     NotasReaderContract.UsuariosEntry._ID+ " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     NotasReaderContract.UsuariosEntry.COLUMN_NAME_NOMBRE + " TEXT," +
                     NotasReaderContract.UsuariosEntry.COLUMN_NAME_CONTRASEÑA + " TEXT)";
+
     private static final String SQL_DELETE_USUARIOS_ENTRIES =
             "DROP TABLE IF EXISTS " + "usuarios";
+
     public NotasBbHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -38,5 +41,19 @@ public class NotasBbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        onUpgrade(db, oldVersion, newVersion);
+    }
 
+    public Cursor getUsuarios(SQLiteDatabase bd) {
+        return bd.query("usuarios",
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+    }
 }
