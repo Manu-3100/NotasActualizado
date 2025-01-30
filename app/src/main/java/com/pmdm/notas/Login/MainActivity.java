@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         ndbh = new NotasBbHelper(this);
 
         // con esto podemos ver todo el tiempo la base de datos
-        // db = ndbh.getWritableDatabase();
+        db = ndbh.getWritableDatabase();
 
         ndbh = new NotasBbHelper(this);
         // ver o no ver la contraseña:
@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Usuario usuario = new Usuario(binding.etNome.getText().toString(), binding.etPassword.getText().toString());
-                if(usuario.comprobarUsuario(ndbh)){
+                if(usuario.comprobarUsuario(ndbh) && usuario.comprobarContrasenha(ndbh)){
                     Intent intent = new Intent(MainActivity.this, NotasActivity.class);
                     intent.putExtra("usuario", usuario.getNome());
                     startActivity(intent);
                     Toast.makeText(MainActivity.this, "Accediendo", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(MainActivity.this, "Usuario incorrecto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Usuario ou contrasinal incorrectos", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -82,11 +82,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Usuario usuario = new Usuario(binding.etNome.getText().toString(), binding.etPassword.getText().toString());
-                usuario.insertUser(ndbh);
-                Intent intent = new Intent(MainActivity.this, NotasActivity.class);
-                intent.putExtra("usuario", usuario.getNome());
-                startActivity(intent);
-                Toast.makeText(MainActivity.this, "Usuario Registrado", Toast.LENGTH_SHORT).show();
+               if(!usuario.comprobarUsuario(ndbh)){
+                   usuario.insertUser(ndbh);
+                   Intent intent = new Intent(MainActivity.this, NotasActivity.class);
+                   intent.putExtra("usuario", usuario.getNome());
+                   startActivity(intent);
+                   Toast.makeText(MainActivity.this, "Usuario Registrado", Toast.LENGTH_SHORT).show();
+               } else {
+                   Toast.makeText(MainActivity.this, "Usuario Ya esta Registrado", Toast.LENGTH_SHORT).show();
+               }
             }
         });
         // revisar que los datos introducidos estén bien introducidos.

@@ -21,7 +21,7 @@ public class NotasBbHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + NotasReaderContract.UsuariosEntry.TABLE_NAME + " (" +
                     NotasReaderContract.UsuariosEntry._ID+ " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     NotasReaderContract.UsuariosEntry.COLUMN_NAME_NOMBRE + " TEXT," +
-                    NotasReaderContract.UsuariosEntry.COLUMN_NAME_CONTRASEÑA + " TEXT)";
+                    NotasReaderContract.UsuariosEntry.COLUMN_NAME_CONTRASENHA + " TEXT)";
 
     private static final String SQL_DELETE_USUARIOS_ENTRIES =
             "DROP TABLE IF EXISTS " + "usuarios";

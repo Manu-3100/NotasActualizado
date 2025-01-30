@@ -8,7 +8,7 @@ public final class NotasReaderContract {
     public static final class UsuariosEntry implements BaseColumns {
         public static final String TABLE_NAME = "usuarios";
         public static final String COLUMN_NAME_NOMBRE = "nombre";
-        public static final String COLUMN_NAME_CONTRASEÑA = "contraseña";
+        public static final String COLUMN_NAME_CONTRASENHA = "contraseña";
     }
     public static final class NotasEntry implements BaseColumns {
         public static final String TABLE_NAME = "notas";
