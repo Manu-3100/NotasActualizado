@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.pmdm.notas.bd.NotasBbHelper;
+import com.pmdm.notas.security.Sal;
 
 public class Usuario {
 
@@ -72,6 +73,8 @@ public class Usuario {
                 columIndex = contrasenhas.getColumnIndex(COLUMN_NAME_CONTRASENHA);
 
                 if(columIndex != -1) {
+
+                    // para que funcione hay que sacar la sal de la ocntraseña de la base de datos
                     if (contrasenhas.getString(columIndex).equals(this.contrasinal)) {
                         esta = true;
                         break;
@@ -88,10 +91,9 @@ public class Usuario {
 
         SQLiteDatabase db = ndbh.getWritableDatabase();
 
-
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_NAME_NOMBRE, this.nome);
-        cv.put(COLUMN_NAME_CONTRASENHA, this.contrasinal);
+        cv.put(COLUMN_NAME_CONTRASENHA, Sal.getHashRobusto(this.contrasinal));
 
         db.insert(TABLE_NAME, null, cv);
 
