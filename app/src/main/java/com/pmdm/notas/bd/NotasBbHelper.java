@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
+
 public class NotasBbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Notas.db";
     private static final int DATABASE_VERSION = 1;

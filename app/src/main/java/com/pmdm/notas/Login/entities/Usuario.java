@@ -91,11 +91,13 @@ public class Usuario {
 
         SQLiteDatabase db = ndbh.getWritableDatabase();
 
+
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_NAME_NOMBRE, this.nome);
-        cv.put(COLUMN_NAME_CONTRASENHA, Sal.getHashRobusto(this.contrasinal));
+        // cv.put(COLUMN_NAME_CONTRASENHA, Sal.getHashRobusto(this.contrasinal));
+        cv.put(COLUMN_NAME_CONTRASENHA, this.contrasinal);
 
+        // insertar en la tabla
         db.insert(TABLE_NAME, null, cv);
-
     }
 }
