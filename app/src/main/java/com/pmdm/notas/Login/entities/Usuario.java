@@ -89,9 +89,8 @@ public class Usuario {
 
     public void insertUser(NotasBbHelper ndbh) {
 
+
         SQLiteDatabase db = ndbh.getWritableDatabase();
-
-
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_NAME_NOMBRE, this.nome);
         // cv.put(COLUMN_NAME_CONTRASENHA, Sal.getHashRobusto(this.contrasinal));

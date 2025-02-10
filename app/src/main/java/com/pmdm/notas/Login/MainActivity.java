@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(MainActivity.this, "Usuario ou contrasinal incorrectos", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
         // evento al clicar en registrar:

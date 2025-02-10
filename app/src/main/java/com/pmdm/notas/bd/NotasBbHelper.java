@@ -7,14 +7,17 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class NotasBbHelper extends SQLiteOpenHelper {
+
     private static final String DATABASE_NAME = "Notas.db";
     private static final int DATABASE_VERSION = 1;
+
     private static final String SQL_CREATE_NOTAS_ENTRIES =
             "CREATE TABLE " + NotasReaderContract.NotasEntry.TABLE_NAME + " (" +
                     NotasReaderContract.NotasEntry._ID + " INTEGER PRIMARY KEY," +
                     NotasReaderContract.NotasEntry.COLUMN_NAME_NOMBRE + " TEXT," +
                     NotasReaderContract.NotasEntry.COLUMN_NAME_FECHA_CREACION + " TEXT," +
                     NotasReaderContract.NotasEntry.COLUMN_NAME_NOMBRE_IMAGEN + " TEXT)";
+
     private static final String SQL_DELETE_NOTAS_ENTRIES =
             "DROP TABLE IF EXISTS " + NotasReaderContract.NotasEntry.TABLE_NAME;
 
